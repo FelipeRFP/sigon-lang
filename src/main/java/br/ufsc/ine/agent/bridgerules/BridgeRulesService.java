@@ -8,8 +8,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import agent.AgentParser.BodyContext;
 import agent.AgentParser.BridgeRuleContext;
-import br.ufsc.ine.agent.context.LangContext;
+import agent.AgentParser.TermContext;
 import br.ufsc.ine.agent.context.beliefs.BeliefsContextService;
 import br.ufsc.ine.agent.context.communication.CommunicationContextService;
 import br.ufsc.ine.agent.context.custom.CustomContext;
@@ -167,21 +168,37 @@ public class BridgeRulesService {
     	// list.stream().map(c -> c.getClauses()).flatMap(l -> l.stream());
     	// List<String> stringRules = rules.stream().map(c -> c.getClauses()).flatMap(l -> l.stream()).collect(Collectors.toList());
     	
+    	//List<BodyContext> list1 = rules.stream().map(c -> c.body()).collect(Collectors.toList());
+    	//list1.stream().forEach(c -> c.term().stream().forEach(j -> System.out.println(j.getText())));
     	
     	
-    	List<String> stringRules = rules.stream().map(c -> (c.head().getText() + " :- " + c.body().getText())).collect(Collectors.toList());
+    	//List<String> stringRules = rules.stream().map(c -> (c.head().getText() + " :- " + c.body().getText())).collect(Collectors.toList());
     	
-    	stringRules.forEach(System.out::println);
+    	//stringRules.forEach(System.out::println);
+    	
+    	
     	
     	
     	
     	
     }
     
-    
+    public void executeCustomRulesDirectcly(){
+    	customContexts.values().forEach(c -> c.callRules().forEach(j -> j.execute()));
+    	//System.out.println("ExecutingRules");
+    	
+    }
     
     
     public void executeBdiRules() {
+    	
+    	Body body2 = Body.builder().context(communicationContext).clause("sense(X)").build();
+    	Head head2 = Head.builder().context(beliefsContext).clause("X").build();
+    	
+    	BridgeRule rule = BridgeRule.builder().head(head2).body(body2).build();
+    	rule.execute();
+
+    	
         Body body = Body.builder().context(communicationContext).clause("sense(X)").build();
         Body plan = Body.builder().context(plansContext).clause("plan(Y,_,Z,_)").build();
         Body planMember = Body.builder().context(plansContext).clause("member(X, Z)").build();

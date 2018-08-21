@@ -1,10 +1,19 @@
 package br.ufsc.ine.agent.context.custom;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import alice.tuprolog.InvalidTheoryException;
 import alice.tuprolog.MalformedGoalException;
 import alice.tuprolog.SolveInfo;
 import alice.tuprolog.Theory;
+import br.ufsc.ine.agent.bridgerules.Body;
+import br.ufsc.ine.agent.bridgerules.BridgeRule;
+import br.ufsc.ine.agent.bridgerules.Head;
 import br.ufsc.ine.agent.context.ContextService;
+import br.ufsc.ine.agent.context.beliefs.BeliefsContextService;
+import br.ufsc.ine.agent.context.communication.CommunicationContextService;
+import br.ufsc.ine.agent.context.desires.DesiresContextService;
 import br.ufsc.ine.utils.PrologEnvironment;
 
 public class CustomContext  implements ContextService {
@@ -22,6 +31,10 @@ public class CustomContext  implements ContextService {
         return  prologEnvironment.getEngine().getTheory();
         
     }
+    
+    public List<BridgeRule> callRules() {
+		return null;
+	}
 
     @Override
     public boolean verify(String fact) {
