@@ -63,6 +63,7 @@ public class Agent {
         	context.printBeliefs();
         BeliefsContextService.getInstance().printBeliefs();
         CommunicationContextService.getInstance().printBeliefs();
+        DesiresContextService.getInstance().printBeliefs();
     }
 
     private String getSense(String literal) {
