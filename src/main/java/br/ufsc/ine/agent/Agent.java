@@ -58,6 +58,9 @@ public class Agent {
         PlansContextService.getInstance().executePlanAlgorithm();
         if(customContexts != null)
         	BridgeRulesService.getInstance().executeCustomRulesDirectcly();
+        
+        for(CustomContext context: customContexts)
+        	context.printBeliefs();
         BeliefsContextService.getInstance().printBeliefs();
         CommunicationContextService.getInstance().printBeliefs();
     }

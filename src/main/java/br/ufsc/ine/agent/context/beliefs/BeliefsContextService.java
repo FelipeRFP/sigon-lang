@@ -75,7 +75,7 @@ public class BeliefsContextService implements ContextService {
 	@Override
 	public void appendFact(String c) {
 
-		System.out.println(c);
+		System.out.println("printing fact from beliefs: " + c);
 		
 		if(Agent.removeBelief){
 			Agent.removeBelief = false;

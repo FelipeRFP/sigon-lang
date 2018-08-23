@@ -35,7 +35,14 @@ public class CustomContext  implements ContextService {
     public List<BridgeRule> callRules() {
 		return null;
 	}
-
+    
+	public void printBeliefs() {
+		System.out.println(this.getName()+":");
+		System.out.println(prologEnvironment.getEngine().getTheory().toString().trim());
+		System.out.println("-------------------------------");
+		
+	}
+	
     @Override
     public boolean verify(String fact) {
         SolveInfo solveGoal;
@@ -65,4 +72,7 @@ public class CustomContext  implements ContextService {
     public String getName() {
         return this.name;
     }
+    
+    
+    
 }

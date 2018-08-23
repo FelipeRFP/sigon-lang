@@ -6,11 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
-import agent.AgentParser.BodyContext;
 import agent.AgentParser.BridgeRuleContext;
-import agent.AgentParser.TermContext;
+import alice.tuprolog.MalformedGoalException;
 import br.ufsc.ine.agent.context.beliefs.BeliefsContextService;
 import br.ufsc.ine.agent.context.communication.CommunicationContextService;
 import br.ufsc.ine.agent.context.custom.CustomContext;
@@ -184,8 +182,23 @@ public class BridgeRulesService {
     }
     
     public void executeCustomRulesDirectcly(){
-    	customContexts.values().forEach(c -> c.callRules().forEach(j -> j.execute()));
+    	//customContexts.values().forEach(c -> c.callRules().forEach(j -> j.execute()));
     	//System.out.println("ExecutingRules");
+    	
+//    	System.out.println("Debbuging my rules:");
+    	for(CustomContext context: customContexts.values()) 
+    		for(BridgeRule rule: context.callRules()) 
+    			if(rule.verify())
+    				rule.execute();
+    		
+    			
+    	
+    	
+//    	System.out.println();
+    	
+    	
+    	
+    	
     	
     }
     
