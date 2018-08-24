@@ -18,6 +18,12 @@ public class CommunicationContextService implements ContextService{
         prologEnvironment = new PrologEnvironment();
     }
     
+	public void printBeliefs() {
+		System.out.println(this.getName()+":");
+		System.out.println(prologEnvironment.getEngine().getTheory().toString().trim().replaceAll("\\n\\n", "\n"));
+		System.out.println("\n");
+	}
+    
     public static CommunicationContextService getInstance() {
         return instance;
     }

@@ -24,6 +24,12 @@ public class DesiresContextService  implements ContextService{
 	}
 
 	 
+	public void printBeliefs() {
+		System.out.println(this.getName()+":");
+		System.out.println(prologEnvironment.getEngine().getTheory().toString().trim().replaceAll("\\n\\n", "\n"));
+		System.out.println("\n");
+	}
+	
 	public void desires(List<LangContext> langContexts) {
 		langContexts.forEach(ctx -> {
 			ctx.getClauses().forEach(clause -> {

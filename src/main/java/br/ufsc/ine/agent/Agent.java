@@ -56,12 +56,15 @@ public class Agent {
         CommunicationContextService.getInstance().appendFact(this.getSense(literal));
         BridgeRulesService.getInstance().executeBdiRules();
         PlansContextService.getInstance().executePlanAlgorithm();
+        if(customContexts != null)
+        	BridgeRulesService.getInstance().executeCustomRulesDirectcly();
+        
+        for(CustomContext context: customContexts)
+        	context.printBeliefs();
+        BeliefsContextService.getInstance().printBeliefs();
+        CommunicationContextService.getInstance().printBeliefs();
+        DesiresContextService.getInstance().printBeliefs();
     }
-
-
-
-
-
 
     private String getSense(String literal) {
         return "sense("+literal.substring(0, literal.length()-1)+").";

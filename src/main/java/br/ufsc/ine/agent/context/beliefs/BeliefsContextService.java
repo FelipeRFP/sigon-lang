@@ -26,6 +26,12 @@ public class BeliefsContextService implements ContextService {
 		return instance;
 	}
 
+	public void printBeliefs() {
+		System.out.println(this.getName()+":");
+		System.out.println(prologEnvironment.getEngine().getTheory().toString().trim().replaceAll("\\n\\n", "\n"));
+		System.out.println("\n");
+	}
+	
 
 	public void beliefs(List<LangContext> beliefs) {
 		this.beliefs = beliefs;
@@ -67,7 +73,6 @@ public class BeliefsContextService implements ContextService {
 
 	@Override
 	public void appendFact(String c) {
-
 		if(Agent.removeBelief){
 			Agent.removeBelief = false;
 			try {
