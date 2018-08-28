@@ -53,16 +53,17 @@ public class Agent {
             literal = literal.replace("not","\\+").trim();
         }
         cycles++;
+        System.out.println(this.getSense(literal));
         CommunicationContextService.getInstance().appendFact(this.getSense(literal));
         BridgeRulesService.getInstance().executeBdiRules();
         PlansContextService.getInstance().executePlanAlgorithm();
         if(customContexts != null)
         	BridgeRulesService.getInstance().executeCustomRulesDirectcly();
         
-        for(CustomContext context: customContexts)
-        	context.printBeliefs();
-        BeliefsContextService.getInstance().printBeliefs();
-        CommunicationContextService.getInstance().printBeliefs();
+//        for(CustomContext context: customContexts)
+//        	context.printBeliefs();
+//        BeliefsContextService.getInstance().printBeliefs();
+//        CommunicationContextService.getInstance().printBeliefs();
         DesiresContextService.getInstance().printBeliefs();
     }
 
