@@ -186,6 +186,8 @@ public class BridgeRulesService {
     	//System.out.println("ExecutingRules");
     	
 //    	System.out.println("Debbuging my rules:");
+    	
+    	
     	for(CustomContext context: customContexts.values()) 
     		for(BridgeRule rule: context.callRules()) 
     			rule.execute();

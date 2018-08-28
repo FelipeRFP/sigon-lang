@@ -44,6 +44,8 @@ public class DesiresContextService  implements ContextService{
 
 	@Override
 	public void appendFact(String c) {
+		if(verify(c))
+			return;
 		try {
 			prologEnvironment.appendFact(c);
 		} catch (InvalidTheoryException e) {

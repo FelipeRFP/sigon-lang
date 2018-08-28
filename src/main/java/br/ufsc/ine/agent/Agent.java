@@ -60,10 +60,10 @@ public class Agent {
         if(customContexts != null)
         	BridgeRulesService.getInstance().executeCustomRulesDirectcly();
         
-//        for(CustomContext context: customContexts)
-//        	context.printBeliefs();
-//        BeliefsContextService.getInstance().printBeliefs();
-//        CommunicationContextService.getInstance().printBeliefs();
+        for(CustomContext context: customContexts)
+        	context.printBeliefs();
+        BeliefsContextService.getInstance().printBeliefs();
+        CommunicationContextService.getInstance().printBeliefs();
         DesiresContextService.getInstance().printBeliefs();
     }
 

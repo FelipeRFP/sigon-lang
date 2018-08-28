@@ -18,14 +18,16 @@ import br.ufsc.ine.utils.PrologEnvironment;
 
 public class CustomContext  implements ContextService {
 
+	protected CustomContext instance;
     protected String name;
     protected PrologEnvironment prologEnvironment;
 
     public CustomContext(String name){
+    	instance = this;
         this.name = name;
         prologEnvironment = new PrologEnvironment();
     }
-
+    
     @Override
     public Theory getTheory() {
         return  prologEnvironment.getEngine().getTheory();
